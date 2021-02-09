@@ -3,11 +3,11 @@
     <header id="header" class="d-flex align-items-center">
       <div class="container">
         <div class="d-flex align-items-center justify-content-between">
-          <a href="/" class="logo d-none d-lg-block">
+          <a href="/" class="logo d-none d-md-block">
             <Logo />
           </a>
 
-          <nav class="nav-menu d-none d-lg-block">
+          <nav class="nav-menu d-none d-md-block">
             <ul>
               <li>
                 <a href="#about">
@@ -118,6 +118,17 @@
   text-transform: uppercase;
 }
 
+@media screen and (max-width: 992px) {
+  .nav-menu a {
+    padding: 8px 0;
+    line-height: 13px;
+    font-size: 14px;
+  }
+  .nav-menu > ul > li {
+    margin: 0 6px;
+  }
+}
+
 .nav-menu > ul > li > a:before {
   content: "";
   position: absolute;
@@ -168,6 +179,13 @@
   color: transparent;
   background-clip: text;
   width: min-content;
+}
+
+@media screen and (max-width: 992px) {
+  .header-title h1 {
+    font-size: 66px;
+    line-height: 76px;
+  }
 }
 
 @media screen and (max-width: 540px) {

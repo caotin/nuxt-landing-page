@@ -60,5 +60,6 @@ export default {
 .partners img {
   padding: 5px;
   width: 33.33%;
+  height: auto;
 }
 </style>

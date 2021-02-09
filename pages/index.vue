@@ -5,7 +5,7 @@
     <Products />
     <Partners />
     <Clients />
-    <script src="/js/main.js" async />
+    <ScrollToTop />
   </div>
 </template>
 

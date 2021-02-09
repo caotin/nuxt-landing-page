@@ -96,4 +96,9 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.owl-theme .owl-dots {
+  display: flex;
+  justify-content: center;
+}
 </style>

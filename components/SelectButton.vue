@@ -1,5 +1,6 @@
 <template>
   <div
+    v-click-outside="hideSelect"
     class="main-select cursor-pointer"
     @click="toggleSelect"
     @blur="toggleSelect"
@@ -7,11 +8,13 @@
     <div
       class="d-flex align-items-center justify-content-between selected-item"
     >
-      <div><img :src="selected.icon" /> {{ selected.name }}</div>
+      <div class="d-flex">
+        <img class="icon-select" :src="selected.icon" /> {{ selected.name }}
+      </div>
       <div class="arrow down" />
     </div>
 
-    <div v-if="show" class="list-items">
+    <div class="list-items" :class="{ visible: show }">
       <div
         v-for="country in countries"
         :key="country.key"
@@ -25,7 +28,12 @@
 </template>
 
 <script>
+import ClickOutside from "vue-click-outside";
+
 export default {
+  directives: {
+    ClickOutside
+  },
   data() {
     return {
       selected: {
@@ -39,11 +47,6 @@ export default {
           key: "en",
           name: "ENG",
           icon: "/images/flags/ENG.png"
-        },
-        {
-          key: "en1",
-          name: "ENG1",
-          icon: "/images/flags/ENG.png"
         }
       ]
     };
@@ -51,6 +54,9 @@ export default {
   methods: {
     toggleSelect() {
       this.show = !this.show;
+    },
+    hideSelect() {
+      this.show = false;
     },
     handleSelectItem(item) {
       this.selected = item;
@@ -69,6 +75,12 @@ export default {
   padding: 10px;
   position: relative;
   transition: 300ms all;
+}
+
+@media screen and (max-width: 992px) {
+  .main-select {
+    width: 100px;
+  }
 }
 
 .selected-item {
@@ -98,6 +110,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
+  opacity: 0;
 }
 .select-item {
   height: 38px;
@@ -110,5 +123,25 @@ export default {
   height: 38px;
   width: 130px;
   background: #ddd;
+}
+
+.icon-select {
+  height: 100%;
+  width: auto;
+  margin: auto 4px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.visible {
+  animation: fadeIn 300ms;
+  opacity: 1;
 }
 </style>
